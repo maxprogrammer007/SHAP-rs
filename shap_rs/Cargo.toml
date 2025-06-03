@@ -1,0 +1,29 @@
+[package]
+name = "shap_rs"
+version = "0.0.1" 
+edition = "2021"
+authors = ["Abhinav Shukla <abhinav02shukla@gmail.com>"] # Update this
+description = "A Rust crate for SHAP (SHapley Additive exPlanations)"
+license = "MIT " # Choose a license
+repository = "https://github.com/Programmers-Paradise/SHAP-rs"
+keywords = ["machine-learning", "explainability", "shap", "xai"]
+categories = ["science::machine-learning", "algorithms"]
+[features]
+default = []
+# When the 'linalg' feature of shap_rs is enabled,
+# it will enable the 'openblas-static' feature of ndarray-linalg.
+# This tells ndarray-linalg to compile OpenBLAS from source and link it statically.
+linalg = ["ndarray-linalg/openblas-static"]
+
+[dependencies]
+ndarray = "0.15"
+rand = "0.8"
+rand_distr = "0.4" # For StandardNormal, etc.
+
+# ndarray-linalg is optional and its features are controlled by our 'linalg' feature
+ndarray-linalg = { version = "0.16", optional = true }
+
+# log = "0.4" # If you want to add logging, uncomment and add to features if needed
+
+[dev-dependencies]
+approx = "0.5" # For floating point comparisons in tests, if you choose to use it
